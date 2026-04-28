@@ -591,6 +591,11 @@ h3 {
   font-size: 1.25rem;
 }
 
+.side-panel .button {
+  width: 100%;
+  margin-top: 26px;
+}
+
 .check-list,
 .plain-list {
   display: grid;
@@ -682,6 +687,20 @@ h3 {
 .info-card p,
 .contact-card p {
   color: var(--muted);
+}
+
+.contact-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.contact-card .button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: auto;
+  padding-inline: 12px;
+  white-space: nowrap;
 }
 
 .feature-band {
