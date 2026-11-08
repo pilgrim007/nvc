@@ -1,0 +1,23 @@
+name: Contact and deployment checks
+on:
+  pull_request:
+  push:
+    branches: [codex/secure-contact-zone-test]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PHP syntax
+        run: |
+          php -l send.php
+          php -l tests/request.php
+          php -l tests/contact.php
+      - name: Exercise handler without sending mail
+        run: php tests/contact.php
+      - name: Check JavaScript and site links
+        run: |
+          node --check contact.js
+          node tests/repo.cjs
