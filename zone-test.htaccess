@@ -1,0 +1,14 @@
+# Deployment configuration: test.nvc.ee only.
+SetEnv NVC_CONTACT_ENABLED 1
+SetEnv NVC_CONTACT_STORAGE /absolute/path/outside/document-root/nvc-contact-private
+DirectoryIndex index.html
+Options -Indexes
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+<FilesMatch "^(\.|README|DEPLOY|REVIEW|preview-server|.*\.(md|json|ya?ml|zip|log))">
+    Require all denied
+</FilesMatch>
+
